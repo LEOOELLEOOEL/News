@@ -1,0 +1,214 @@
+{
+	"index.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"News.html",
+			"guide.html",
+			"NewsList.html",
+			"detail.html",
+			"user-info.html",
+			"HotNews.html"
+		]
+	},
+	"guide.html": {
+		"resources": [
+			"js/mui.min.js",
+			"imgs/2.png",
+			"css/mui.min.css",
+			"imgs/3.png",
+			"imgs/4.png",
+			"imgs/1.png",
+			"imgs/guide-bkg.jpg"
+		],
+		"refer": [
+			"News.html",
+			"home.html"
+		]
+	},
+	"home.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"News.html",
+			"guide.html"
+		]
+	},
+	"News.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"NewsList.html",
+			"fonts/mui.ttf",
+			"js/News.js",
+			"js/News0.js",
+			"imgs/setting.png",
+			"NetError.html",
+			"imgs/header-bc.png",
+			"imgs/info-back.jpg"
+		],
+		"refer": [
+			"NewsList.html",
+			"Login.html",
+			"detail.html",
+			"NewsList1.html",
+			"guide.html",
+			"Setting.html",
+			"HotNews.html",
+			"user-info.html",
+			"about-me.html",
+			"NetError.html",
+			"1.html"
+		]
+	},
+	"NewsList.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"imgs/3.png",
+			"js/ajax-news.js",
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js",
+			"js/News.js",
+			"js/jquery-2.1.0.js",
+			"js/mui.lazyload.js",
+			"js/mui.lazyload.img.js",
+			"imgs/2.png",
+			"imgs/Bg.jpg",
+			"imgs/news.png",
+			"imgs/bc.jpg"
+		]
+	},
+	"NewsList1.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		]
+	},
+	"detail.html": {
+		"resources": [
+			"newdata.txt",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"imgs/header-bc.png"
+		]
+	},
+	"test.html": {
+		"resources": [
+			"NewsList.html",
+			"fonts/mui.ttf",
+			"js/mui.js",
+			"css/mui.css"
+		],
+		"refer": [
+			"NewsList.html",
+			"Setting.html"
+		]
+	},
+	"Setting.html": {
+		"resources": [
+			"js/AJAX.js",
+			"newdata.txt",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		]
+	},
+	"Login.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
+		]
+	},
+	"HotNews.html": {
+		"resources": [
+			"js/ajax-news.js",
+			"js/jquery-2.1.0.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"imgs/1.png",
+			"js/mui.lazyload.js",
+			"js/mui.lazyload.img.js",
+			"fonts/mui.ttf",
+			"imgs/Bg.jpg",
+			"imgs/news.png"
+		]
+	},
+	"user-info.html": {
+		"resources": [
+			"imgs/shop03.jpg",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"Login.html",
+			"imgs/news.png"
+		],
+		"refer": [
+			"Login.html",
+			"user/Login.html",
+			"user/my-info.html",
+			"user/account-security.html"
+		]
+	},
+	"user/Login.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"imgs/login-back.jpg",
+			"imgs/bc.jpg"
+		],
+		"refer": [
+			"user/help-of-login.html",
+			"user/Register.html"
+		]
+	},
+	"about-me.html": {
+		"resources": [
+			"imgs/shop03.jpg"
+		]
+	},
+	"NetError.html": {
+		"resources": [
+			"imgs/error.jpg"
+		]
+	},
+	"user/my-info.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"imgs/info-back.jpg",
+			"imgs/bc.jpg"
+		]
+	},
+	"user/help-of-login.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
+		]
+	},
+	"user/Register.html": {
+		"resources": [
+			"js/CheckCode.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"imgs/login-back.jpg"
+		]
+	},
+	"user/account-security.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	}
+}

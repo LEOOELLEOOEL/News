@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+   <style>
+   label{
+   	text-align:end
+   }
+   body{
+   	color: white;
+   }
+   	.code{
+background-image: url(code.jpg);
+font-family: Arial;
+font-style: italic;
+color: Red;
+border: 0;
+padding: 2px 3px;
+letter-spacing: 3px;
+font-weight: bolder;
+}
+   </style>
+</head>
+<body>
+	<img src="../imgs/bc.jpg" style="width: 100%;height: 100%;position: absolute;z-index: -1; "/>
+	<header class="mui-bar mui-bar-nav" style="background: none;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">登录</a>
+	    <h1 class="mui-title">註冊</h1>
+	</header>
+	<div class="mui-content" style="background: none;">
+	    <div class="mui-input-row">
+	    <label>账号：</label>
+	    <input id="user-name" type="text" placeholder="输入账号">
+	</div>
+	<div class="mui-input-row">
+	    <label>密码：</label>
+	    <input id="password" type="text" placeholder="输入密码">
+	</div>
+	<div class="mui-input-row">
+	    <label>确认密码：</label>
+	    <input id="checkPassword" type="text" placeholder="再次输入密码">
+	</div>
+	<div class="mui-input-row">
+	    <label>手机号码：</label>
+	    <input id="phone" type="text" placeholder="输入手机号码">
+	</div>
+	<div class="mui-input-row">
+	    <label>验证码：</label>
+	    <input id="input1" type="text" placeholder="输入4位验证码">
+	</div>
+	 <label>图形验证码：</label> 
+	<input type="text" onclick="createCode()" readonly="readonly" id="checkCode" class="unchanged" style="width: 5em" /><br />
+  <button type="button" id="firstButton"style="left: 37%;" class="mui-btn mui-btn-blue">注册</button><br /><br />
+	</div>
+	
+	
+<script type="text/javascript" src="../js/CheckCode.js" ></script>
+<script>
+	document.getElementById('firstButton').addEventListener('tap',function () {
+	       
+	        checkAccountAndPW();
+	})
+	function checkAccountAndPW(){
+		var userName= document.getElementById("user-name");
+		var userPassword=document.getElementById("password");
+		var checkpassword=document.getElementById("checkPassword");
+		if(userName==null){mui.alert("账号不能为空！","账号格式错误")}
+		else{
+			if(userPassword==null||checkpassword==null){mui.alert("密码不能为空！","密码格式错误")}
+			else{
+				if(userPassword!=checkpassword){mui.alert("两次输入密码不一致！","密码验证错误")}
+				else{
+					 validate();
+				}
+			}
+		}
+		
+		
+	}
+</script>
+</body>
+</html>

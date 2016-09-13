@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.img-set {
+				position: relative;
+				width: 80%;
+				height: 15em;
+				z-index: 0;
+			}
+			
+			.title-set {
+				position: absolute;
+    		font-size: 1.25em;
+    		width: 100%;
+    		bottom: 2em;
+    		text-align: center;
+    		left: 0;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group">
+					<!--第一个内容区容器-->
+					<div class="mui-slider-item">
+						<!-- 具体内容 -->
+
+					</div>
+					<!--第二个内容区-->
+					<div class="mui-slider-item">
+						<!-- 具体内容 -->
+
+					</div>
+					<div class="mui-slider-item">
+						<!-- 具体内容 -->
+
+					</div>
+					<div class="mui-slider-item">
+						<!-- 具体内容 -->
+
+					</div>
+					<div class="mui-slider-item">
+						<!-- 具体内容 -->
+
+					</div>
+
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<ul id="list" class="mui-table-view mui-table-view-chevron">
+
+			</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/ajax-news.js"></script>
+		<script type="text/javascript" src="js/mui.lazyload.js"></script>
+		<script type="text/javascript" src="js/mui.lazyload.img.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function() {
+				mui(".mui-slider-group").on("tap", "a", function() {
+					var newsid = this.getAttribute("href");
+					//var w=plus.webview.open(newsid,newsid);
+					var detail = plus.webview.getWebviewById("detail.html");
+					mui.fire(detail, "showNews", {
+						id: newsid
+					});
+					detail.show(
+						"slide-in-right", 150
+					)
+				});
+				mui("#list").on("tap", "a", function() {
+					var newsid = this.getAttribute("href");
+					//var w=plus.webview.open(newsid,newsid);
+					var detail = plus.webview.getWebviewById("detail.html");
+					mui.fire(detail, "showNews", {
+						id: newsid
+					});
+					detail.show(
+						"slide-in-right", 150
+					)
+				});
+			})
+			var NewsSlider = document.querySelectorAll(".mui-slider-item");
+			AjaxJquery();
+			//   var fragment = document.createDocumentFragment();
+			for (var i = 0; i < NewsSlider.length; i++) {
+				//var div=document.createElement("div");
+				var a = document.createElement("a");
+				//	div.className="img-set";
+				var img = document.createElement("img");
+				img.className = "img-set";
+//				var span = document.createElement("div");
+//				span.className = "title-area";
+				var title=document.createElement("a");
+				title.className="title-set";
+				mui.each(data1.retData[i], function(index, item) {
+					if (index === "image_url") {
+						if (item == "") {
+							img.src = "imgs/news.png"
+						} else {
+							img.src = item;
+						}
+					};
+					if (index === 'title') {
+						
+						title.innerText = item.slice(0,18)+"...";
+					}
+					if (index === "url") {
+						a.href = item
+					}
+				});
+				a.appendChild(img);
+//				span.appendChild(title);
+				a.appendChild(title);
+				NewsSlider[i].appendChild(a);
+			}
+			var list = document.getElementById("list");
+			for (var i = 0; i < 10; i++) {
+				AjaxJquery();
+				for (var n = 0; n < 5; n++) {
+					var li = document.createElement("li");
+					li.className = 'mui-table-view-cell mui-media';
+					var a = document.createElement("a");
+					var div = document.createElement("div");
+					var img = document.createElement("img");
+					img.className = "mui-media-object mui-pull-left";
+					div.className = "mui-media-body";
+					var p = document.createElement("p");
+					p.className = "mui-ellipsis";
+					mui.each(data1.retData[n], function(index, item) {
+						if (index === "image_url") {
+							if (item == "") {
+								img.src = "imgs/news.png"
+							} else {
+								img.setAttribute("data-lazyload", item);
+							}
+						}
+						if (index === 'title') {
+							div.innerText = item;
+						}
+						if (index === "abstract") {
+							p.innerHTML = item;
+						}
+						if (index === "url") {
+							a.href = item
+						}
+					});
+					div.appendChild(p);
+					a.appendChild(img);
+					a.appendChild(div)
+					li.appendChild(a);
+					list.appendChild(li);
+				}
+			}
+			(function($) {
+				$(document).imageLazyload({
+					placeholder: 'imgs/news.png'
+				});
+			})(mui);
+		</script>
+	</body>
+
+</html>

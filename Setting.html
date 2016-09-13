@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style type="text/css">
+    	body{
+    		z-index: 9;
+    	}
+    	.app-text-mid{
+    		text-align: left;
+    	}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a id="close-btn" class=" mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">设置</h1>
+	</header>
+	<div class="mui-content">
+	    <ul class="mui-table-view">
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                    更新账号授权信息
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                   更新本机缓存信息
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell">
+								接收新闻推送
+								<div class="mui-switch mui-active mui-switch-mini">
+									<div class="mui-switch-handle"></div>
+								</div>
+							</li>
+	         
+	      </ul>
+	      <br />
+	         <ul class="mui-table-view">
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                    关于我们
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                   公告列表
+	                </a>
+	            </li>
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                     意见反馈
+	                </a>
+	            </li>
+	        </ul>
+	        <br />
+	         <ul class="mui-table-view">
+	            <li class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                    重启软件
+	                </a>
+	            </li>
+	            <li id="exit" class="mui-table-view-cell">
+	                <a class="app-text-mid">
+	                   退出软件
+	                </a>
+	            </li> 
+	        </ul>
+	</div>
+	<script>
+	mui.init({
+		gestures:{
+			swipe:true
+		}
+	})
+		function close() {
+				mui.fire(mui.currentWebview.opener(),"menu:close");
+			}
+			
+			//点击“关闭侧滑菜单”按钮处理逻辑
+			document.getElementById("close-btn").addEventListener("tap",close);
+			//在android4.4.2中的swipe事件，需要preventDefault一下，否则触发不正常
+			window.addEventListener('dragstart',function(e){
+				mui.gestures.touch.lockDirection = true; //锁定方向
+				mui.gestures.touch.startDirection = e.detail.direction;
+			});
+			window.addEventListener('dragright', function(e) {
+				if(!mui.isScrolling){
+					e.detail.gesture.preventDefault();	
+				}
+			});
+			//监听左滑事件，若菜单已展开，左滑要关闭菜单；
+			window.addEventListener("swiperight",function (e) {
+				if(Math.abs(e.detail.angle)>-170){
+					close();						
+				}
+			});
+			mui.back=function(){
+				close();
+			};
+			mui.plusReady(function(){
+				document.getElementById('exit').addEventListener('tap',function () {
+					mui.confirm("是否退出HNew？","退出",["确认","取消"],function(e){
+						if(e.index==0){
+							plus.runtime.quit();
+						}
+						  
+					})
+				})
+				
+			})
+	</script>
+</body>
+</html>
